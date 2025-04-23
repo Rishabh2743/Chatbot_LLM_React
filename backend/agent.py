@@ -22,5 +22,5 @@ async def get_response(user_message: str) -> str:
     provider = providers.get(current_provider)
     if not provider:
         raise Exception(f"No provider found for {current_provider}")
-    return await provider.get_response(user_message)
+    return  await provider.get_response(user_message)
 

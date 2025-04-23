@@ -1,124 +1,158 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
+/* General Body Styling */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
+/* General Container */
 .container {
-  max-width: 600px;
-  margin: 40px auto;
+  width: 400px;
+  height: 500px;  /* Increased height */
+  background-color: #f9f9f9;
   padding: 20px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  font-family: 'Segoe UI', sans-serif;
+  gap: 15px;
+  overflow: hidden;
+  /* Center the chatbot vertically within the body */
 }
 
+/* Header */
 .header {
   text-align: center;
   font-size: 24px;
-  color: #007bff;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-.chatbox {
-  height: 400px;
-  overflow-y: auto;
+/* Model selection dropdown */
+.model-select {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.model-select label {
+  font-size: 14px;
+  color: #555;
+}
+
+.model-select select {
+  padding: 8px;
   border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 12px;
-  background: #f9f9f9;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Chatbox */
+.chatbox {
+  flex-grow: 1;  /* Allow the chatbox to take up remaining space */
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .message {
-  max-width: 75%;
-  padding: 10px 14px;
-  border-radius: 16px;
-  font-size: 15px;
+  max-width: 70%;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 14px;
   line-height: 1.4;
 }
 
+.message.user {
+  align-self: flex-end;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.message.ai {
+  align-self: flex-start;
+  background-color: #eeeeee4b;
+  color: #333;
+}
+
 .typing {
-  font-style: italic;
   font-size: 14px;
-  color: #888;
+  color: #999;
+  text-align: center;
 }
 
-.text {
-  margin: 0;
-}
-
+/* Input area */
 .input-area {
   display: flex;
   gap: 10px;
 }
 
-input {
-  flex: 1;
+.input-area input {
+  flex-grow: 1;
   padding: 10px;
   font-size: 16px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   outline: none;
 }
 
-button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 10px;
+.input-area input:focus {
+  border-color: #4CAF50;
+}
+
+.input-area button {
+  padding: 10px 20px;
   font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.input-area button:hover {
+  background-color: #45a049;
+}
+
+/* Additional Styling for better responsiveness */
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+    height: 450px;  /* Adjust height for smaller screens */
+  }
+
+  .message {
+    max-width: 90%;
+  }
+
+  .input-area {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .input-area input,
+  .input-area button {
+    width:
+     100%;
+  }
+   
+  .message.error {
+    background-color: #ffe0e0;
+    border: 1px solid #ff4d4f;
+    color: #a94442;
+  }
+  
+
 }
